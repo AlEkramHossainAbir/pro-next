@@ -1,7 +1,7 @@
-"use client";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import CustomLink from "./components/CustomLink";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,20 +35,20 @@ export default function RootLayout({
           <ul className="flex space-x-4 p-4">
             {arr.map((item) => (
               <li key={item}>
-                <Link href={`/dashboard/${item}`}>{`Item ${item}`}</Link>
+                <CustomLink path={`/dashboard/${item}`}>{`Item ${item}`}</CustomLink>
               </li>
             ))}
             <li>
-              <Link href="/home">Home</Link>
+              <CustomLink path="/home">Home</CustomLink>
             </li>
             <li>
-              <Link href="/dashboard/analytics">Analytics</Link>
+              <CustomLink path="/dashboard/analytics">Analytics</CustomLink>
             </li>
             <li>
-              <Link href="/dashboard/settings">Settings</Link>
+              <CustomLink path="/dashboard/settings">Settings</CustomLink>
             </li>
             <li>
-              <Link href="/contact">Contact</Link>
+              <CustomLink path="/contact">Contact</CustomLink>
             </li>
           </ul>
         </nav>
