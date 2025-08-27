@@ -1,3 +1,4 @@
+"use client";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
@@ -23,6 +24,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   console.log("RootLayout loaded");
+  const arr = [1, 2, 3];
+
   return (
     <html lang="en">
       <body
@@ -30,15 +33,26 @@ export default function RootLayout({
       >
         <nav className="flex flex-col justify-between items-center p-4 bg-gray-800 text-white">
           <ul className="flex space-x-4 p-4">
-            <li><Link href="/home">Home</Link></li>
-            <li><Link href="/dashboard/analytics">Analytics</Link></li>
-            <li><Link href="/dashboard/settings">Settings</Link></li>
-            <li><Link href="/contact">Contact</Link></li>
+            {arr.map((item) => (
+              <li key={item}>
+                <Link href={`/dashboard/${item}`}>{`Item ${item}`}</Link>
+              </li>
+            ))}
+            <li>
+              <Link href="/home">Home</Link>
+            </li>
+            <li>
+              <Link href="/dashboard/analytics">Analytics</Link>
+            </li>
+            <li>
+              <Link href="/dashboard/settings">Settings</Link>
+            </li>
+            <li>
+              <Link href="/contact">Contact</Link>
+            </li>
           </ul>
         </nav>
-        <>
-        {children}
-        </>
+        <>{children}</>
       </body>
     </html>
   );
