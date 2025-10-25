@@ -2,10 +2,18 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export default function CustomLink({path, children}){
+interface CustomLinkProps {
+    path: string;
+    children: React.ReactNode;
+  }
+
+ const CustomLink: React.FC<CustomLinkProps> = ({path, children})=>{
     const pathname = usePathname()
-    console.log("CustomLink", pathname, path)
+    const active = pathname === path;
+
     return(
-        <Link href={path}>{children}</Link>
+        <Link href={path} className={active ? "text-blue-500":""}>{children}</Link>
     )
 }
+
+export default CustomLink;
